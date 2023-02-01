@@ -16,6 +16,7 @@ const cookie = require("cookie-parser");
 
 const home = require("../Routes/home");
 const signUp = require("../Routes/signUp");
+const getParam = require("../Routes/getParam");
 
 const port = process.env.PORT;
 app.use(cookie());
@@ -44,6 +45,7 @@ app.use(express.json());
 
 app.use("/", home);
 app.use("/signUp", signUp);
+app.use("/getParam", getParam);
 
 app.listen(port, () => {
     console.log("Server is Running on " + port);
