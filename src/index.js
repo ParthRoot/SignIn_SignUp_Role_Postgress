@@ -26,6 +26,7 @@ app.set("views", path.join(__dirname, "../views"));
 app.use(express.json());
 
 app.use("/", home);
+// app.use("/signUp", signUp);
 
 app.listen(port, () => {
     console.log("Server is Running on " + port);
