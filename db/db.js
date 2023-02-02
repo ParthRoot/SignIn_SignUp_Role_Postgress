@@ -8,7 +8,3 @@ const pool = new Pool({
     password: process.env.db_pass,
     port: 5432,
 });
-
-module.exports = {
-    query: async(text, params) => await pool.query(text, params),
-};
