@@ -21,19 +21,19 @@
     <%- include('commen/navLog') %>
 
         <% if(msg.length> 0) { %>
-            <% if (msg[1] == false) { %>
+            <% if (msg[1] !=200) { %>
 
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong> <%- msg %></strong>
+                    <strong> <%- msg[0]%> <%- msg[2]%></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <%} else { %>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong> <%- msg %></strong>
+                        <strong> <%- msg[0]%> <%- msg[2]%></strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <% } %>
@@ -68,40 +68,17 @@
                                                     <!-- <label class="form-label" for="form1Example23">Password</label> -->
                                                 </div>
 
-                                                <!-- Role input -->
-                                                <div class="form-outline mb-4">
-                                                    <select class="form-control form-control-lg" name="role" id="loginselect">
-                                    <option>Select Role</option>
-                                    <!-- <option value="">Student</option>
-                                    <option value="Teacher">Teacher</option>
-                                    <option value="Admin">Admin</option> -->
-                                  </select>
-                                                    <!-- <label class="form-label" for="form1Example23">Password</label> -->
-                                                </div>
-
                                                 <div class="d-flex justify-content-around
                                     align-items-center mb-4">
-                                                    <!-- Checkbox -->
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-                                                        <label class="form-check-label" for="form1Example3">
-                                                Remember me
-                                            </label>
-                                                    </div>
-                                                    <a href="#!">Forgot password?</a>
-                                                    <a href="#!" data-toggle="modal" data-target="#exampleModal">SignUp?</a>
+                                                    <!-- <a href="#!" data-toggle="modal" data-target="#loginModal">Forgot password?</a> -->
+                                                    <a href="#!" data-toggle="modal" data-target="#signUpModal">SignUp?</a>
                                                 </div>
 
                                                 <!-- Submit button -->
                                                 <button type="submit" id="signInBtn" class="btn
                                     btn-primary btn-lg btn-block">
-                                        Sign in
-                                    </button>
-
-                                                <!-- <button type="button" id="signUpBtn" class="btn
-                                    btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
-                                    SignUp
-                                </button> -->
+                                                    Sign in
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
@@ -110,23 +87,24 @@
 
 
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Sign Up Modal -->
+                            <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">SignUp</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
                                         <div class="modal-body">
                                             <form action="http://localhost:8000/signUp" class="form" method="post" enctype="application/json">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
                                                     <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email
-                                            with anyone else.</small>
+                                                    <small id="emailHelp" class="form-text text-muted">We'll never share
+                                                        your email
+                                                        with anyone else.</small>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Password</label>
@@ -134,25 +112,52 @@
                                                 </div>
                                                 <div class="form-outline mb-4">
                                                     <select class="form-control form-control-lg" name="role" id="signUpselect">
-                                    <option>Select Role</option>
-                                    <!-- <option value="Student">Student</option>
-                                    <option value="Teacher">Teacher</option>
-                                    <option value="Admin">Admin</option> -->
-                                  </select>
-                                                    <!-- <label class="form-label" for="form1Example23">Password</label> -->
+                                                        <option>Select Role</option>
+                                                     
+                                                    </select>
+
                                                 </div>
-                                                <!-- <div class="form-group">
-                                <label for="exampleInputPassword1">Confirm Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div> -->
-                                                <div class="form-group form-check">
-                                                    <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> -->
-                                                    <!-- <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
-                                                </div>
-                                                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary">SignUp</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- login-modal -->
+                            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="http://localhost:8000/forgot" class="form" method="post" enctype="application/json">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">New Password</label>
+                                                    <input type="password" name="password" class="form-control" id="password">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Enter Otp</label>
+                                                    <input type="password" name="otp" class="form-control" id="otp">
+                                                    <small id="emailHelp" class="form-text text-muted">otp send on your register email</small>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Forgot</button>
                                                 </div>
                                             </form>
                                         </div>

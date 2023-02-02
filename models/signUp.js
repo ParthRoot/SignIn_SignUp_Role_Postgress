@@ -15,8 +15,8 @@ async function registerUser(userData) {
         for (let i = 0; i < dbEmailData.rowCount; i++) {
             if (email === dbEmailData.rows[i].email) {
                 let statusData = {
-                    msg: "user is already exist!!",
-                    status: false,
+                    msg: "user is already registered!!",
+                    status: 400,
                 };
 
                 return statusData;
@@ -29,22 +29,22 @@ async function registerUser(userData) {
         if (register.rowCount > 0) {
             let statusData = {
                 msg: "SignUp Successfully!!",
-                status: true,
+                status: 200,
             };
 
             return statusData;
         } else {
             let statusData = {
                 msg: "No data found !!",
-                status: false,
+                status: 404,
             };
 
             return statusData;
         }
     } catch (e) {
         let statusData = {
-            msg: "Something Went Wrong!!",
-            status: false,
+            msg: "Server Error!",
+            status: 500,
         };
 
         return statusData;

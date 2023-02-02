@@ -15,9 +15,10 @@ const bodyParser = require("body-parser");
 const cookie = require("cookie-parser");
 
 const home = require("../Routes/home");
-const login = require("../Routes/login")
+const login = require("../Routes/login");
 const signUp = require("../Routes/signUp");
 const getParam = require("../Routes/getParam");
+const forgotPass = require("../Routes/forgotPass");
 
 const port = process.env.PORT;
 app.use(cookie());
@@ -46,8 +47,9 @@ app.use(express.json());
 
 app.use("/", home);
 app.use("/signUp", signUp);
-app.use("/login", login)
+app.use("/login", login);
 app.use("/getParam", getParam);
+app.use("/forgotPass", forgotPass);
 
 app.listen(port, () => {
     console.log("Server is Running on " + port);
