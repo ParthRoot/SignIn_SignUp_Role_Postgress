@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <script src="/validatePass.js"></script>
+    <title>DashBoard</title>
+</head>
+
+<body>
+
+    <%- include('commen/navLog') %>
+
+        <% if(msg.length> 0) { %>
+            <% if (msg[1] !=200) { %>
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong> <%- msg[0]%></strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <%} else { %>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong> <%- msg[0]%></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <% } %>
+
+                        <%}%>
+                            <div class="container" style="padding-top: 100px; width: 750px;">
+                                <div class="card justify-content-center" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">DashBoard</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <!-- <form action="http://localhost:8000/login" class="form" method="post" enctype="application/json"> -->
+                                        <a href="#" class="card-link" data-toggle="modal" data-target="#resetPass">Reset Password</a>
+                                        <!-- </form> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="resetPass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="http://localhost:8000/resetPassword" method="post" enctype="application/json" class="form">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Current Password</label>
+                                                    <input type="password" class="form-control" id="currentPassword" name="password" aria-describedby="emailHelp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">New Password</label>
+                                                    <input type="password" class="form-control" id="newPassword" name="newPassword">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Re enter New Password</label>
+                                                    <input type="password" class="form-control" id="reNewPassword" name="reNewPassword">
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary" id="reset" onclick="validPassword()">Reset</button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Optional JavaScript; choose one of the two! -->
+
+                            <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+                            <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+                            <!-- Option 2: Separate Popper and Bootstrap JS -->
+                            <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

@@ -18,7 +18,8 @@ const home = require("../Routes/home");
 const login = require("../Routes/login");
 const signUp = require("../Routes/signUp");
 const getParam = require("../Routes/getParam");
-const forgotPass = require("../Routes/forgotPass");
+const resetPassword = require("../Routes/resetPassword");
+const dashboard = require("../Routes/dashboard");
 
 const port = process.env.PORT;
 app.use(cookie());
@@ -49,7 +50,8 @@ app.use("/", home);
 app.use("/signUp", signUp);
 app.use("/login", login);
 app.use("/getParam", getParam);
-app.use("/forgotPass", forgotPass);
+app.use("/resetPassword", resetPassword);
+app.use("/dashboard", dashboard);
 
 app.listen(port, () => {
     console.log("Server is Running on " + port);

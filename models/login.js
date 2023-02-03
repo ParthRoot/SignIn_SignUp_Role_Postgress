@@ -56,4 +56,33 @@ async function loginData(login_data, req, res) {
     }
 }
 
-module.exports = { loginData };
+//token verication
+let vericationUsers = (req, res, next) => {
+    try {
+        console.log("middlewere");
+        const token = req.headers["token"] || req.cookies.token;
+
+        if (!token) {
+            res.redirect("/");
+            res.status(200).end();
+        }
+
+        const decodeToken = jwt.verify(token, process.env.secreat_key);
+        const userId = decodeToken.personalData.id;
+
+        if (req.body.userId && req.body.userId !== userId) {
+            res.locals.isAuthenticated = false;
+        } else {
+            res.locals.isAuthenticated = true;
+            res.locals.userId = userId;
+            res.locals.email = decodeToken.personalData.email;
+            next();
+        }
+    } catch (e) {
+        res.locals.isAuthenticated = false;
+        console.log("not Verigy token");
+        res.status(401).end();
+    }
+};
+
+module.exports = { loginData, vericationUsers };
